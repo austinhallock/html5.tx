@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>HTML5.tx Presentation</title>
+		<meta name="description" content="A basic HTML5 game...presentation" />
+		<meta name="author" content="Austin Hallock" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		
+		<link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<!-- Syntax highlighter -->
+		<link href="css/prism.css" rel="stylesheet" />
+		<style type='text/css'>
+			@font-face {
+			  font-family: 'ptserif';
+			  font-style: normal;
+			  font-weight: 400;
+			  src: local('ptserif'), local('PTSerif-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptserif/v4/sDRi4fY9bOiJUbgq53yZCfesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+			}
+			@font-face {
+			  font-family: 'ptserif';
+			  font-style: normal;
+			  font-weight: 700;
+			  src: local('ptserif Bold'), local('PTSerif-Bold'), url(http://themes.googleusercontent.com/static/fonts/ptserif/v4/QABk9IxT-LFTJ_dQzv7xpIbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+			}
+			@font-face {
+			  font-family: 'ptserif';
+			  font-style: italic;
+			  font-weight: 400;
+			  src: local('ptserif Italic'), local('PTSerif-Italic'), url(http://themes.googleusercontent.com/static/fonts/ptserif/v4/03aPdn7fFF3H6ngCgAlQzBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+			}
+			@font-face {
+			  font-family: 'ptserif';
+			  font-style: italic;
+			  font-weight: 700;
+			  src: local('ptserif Bold Italic'), local('PTSerif-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/ptserif/v4/Foydq9xJp--nfYIx2TBz9QFhaRv2pGgT5Kf0An0s4MM.woff) format('woff');
+			}
+			body {
+				font-family: 'ptserif', georgia, serif;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+				background: #222 url(http://clay.io/images/transparent-stars.png);
+				color: #fff;
+			}
+			a {
+				color: #fff;
+				font-weight: bold;
+			}
+			input[type=button] {
+				font-family: 'ptserif', georgia, serif;
+				padding: 10px 15px;
+				background: #00659C;
+				border: none;
+				color: #fff;
+				font-weight: bold;
+				font-size: 1.3em;
+			}
+			input[type=button]:hover {
+				background: #147BB3;
+			}
+			input[type=button]:active {
+				background: #045987;
+			}
+			#canvas {
+				background: #000 url(http://clay.io/images/transparent-stars.png);
+			}
+			.slide {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				padding: 20px;
+				box-sizing: border-box;
+				display: none;
+			}
+			.slide h1 {
+				margin-top: 0;
+			}
+			.slide > ul {
+				font-size: 1.3em;
+			}
+			.show {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id='canvas'></canvas>
+		
+		<div class='slide show' id='slide-introductions' data-title='Introductions'>
+			<h1>Introductions</h1>
+			<ul>
+				<li>Austin Hallock</li>
+				<li>Student at the University of Texas</li>
+				<li>More Importantly... co-founder of <a href='http://clay.io' target='_blank'>Clay.io</a></li>
+				<ul>
+					<li>Platform for HTML5 games</li>
+					<li>Marketplace + API (user accounts, leaderboards, in-game payments, data storage, analytics, etc...)</li>
+				</ul>
+				<li>Jumping into HTML5 Games</li>
+				<ul>
+					<li>Best way to learn is looking at source code of this presentation</li>
+					<li>github.com/austinhallock/html5.tx</li>
+				</ul>
+			</ul>
+		</div>
+		
+		<div class='slide' id='slide-why' data-title='Why HTML5?'>
+			<h1>Why HTML5 for Game Development?</h1>
+			<ul>
+				<li>Cross-platform</li>
+				<ul>
+					<li>Desktops</li>
+					<li>Phones</li>
+					<li>Tablets</li>
+					<li>Smart TVs / Consoles?</li>
+				</ul>
+				<li>Quick development process</li>
+				<li>Easily accessible games</li>
+			</ul>
+		</div>
+		
+		<div class='slide' id='slide-jumping-in' data-title='Jumping into HTML5 Game Development'>
+			<h1>Jumping into HTML5 Game Development</h1>
+			<ul>
+				<li>The &lt;canvas&gt; element</li>
+				<li>Canvas cleared and redrawn every 16ms (60 times per second)</li>
+			</ul>
+		</div>
+		
+		
+		<div class='slide' id='slide-canvas' data-title='The <canvas> Element'>
+			<h1>The &lt;canvas&gt; Element</h1>
+			<pre><code class='language-javascript'>&lt;canvas id='canvas'&gt;&lt;/canvas&gt;</code></pre>
+			<pre><code class='language-javascript'>var canvas = document.getElementById( 'canvas' );
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = this.canvas.getContext( '2d' );</code></pre>			
+		</div>
+		
+		
+		<div class='slide' id='slide-requestanimationframe' data-title='window.requestAnimationFrame'>
+			<h1>window.requestAnimationFrame</h1>
+			<ul>
+				<li>Better alternative to <code>setTimeout</code> and <code>setInterval</code></li>
+				<li>More appropriate utilization of CPU</li>
+				<li>If tab isn't visible, loop is paused</li>
+			</ul>
+			<pre><code class='language-javascript'>window.requestAnimationFrame( gameLoop );</code></pre>
+		</div>
+		
+		<div class='slide' id='slide-draw' data-title='Drawing to the Canvas - Box'>
+			<h1>Drawing to the Canvas - A Simple Box</h1>
+			<strong>Box</strong>
+			<pre><code class='language-javascript' id='code-box' contenteditable='true'>Game.paused = true;
+Game.ctx.fillStyle = '#fff';
+Game.ctx.fillRect( window.innerWidth - 125, 50, 100, 100 );</code></pre>
+			<input type='button' class='try' id='box' value='Try' />
+			<input type='button' class='resume' value='Resume' />
+		</div>
+		
+		<div class='slide' id='slide-draw-image' data-title='Drawing to the Canvas - Images'>
+			<h1>Drawing to the Canvas - Images</h1>
+			<strong>Box</strong>
+			<pre><code class='language-javascript' id='code-image' contenteditable='true'>Game.paused = true;
+var image = new Image();
+image.src = 'images/astronaut.svg';
+image.onload = function() {
+	Game.ctx.drawImage( image, window.innerWidth - 300, 50, 300, 300 );
+};</code></pre>
+			<input type='button' class='try' id='image' value='Try' />
+			<input type='button' class='resume' value='Resume' />
+		</div>
+		
+		<div class='slide' id='slide-player-object' data-title='Player Object'>
+			<h1>Player Object</h1>
+			<ul>
+				<li>Store position, velocity, and acceleration</li>
+				<li><code>draw</code> method draws the sprite</li>
+			</ul>
+			<pre><code class='language-javascript' id='code-player' contenteditable='true'>Player.WALK_VELOCITY = 50;</code></pre>
+			<input type='button' class='try' id='player' value='Try' />
+		</div>
+		
+		<div class='slide' id='slide-player-move' data-title='Player Object - Behind the Scenes'>
+			<h1>Player Object - Behind the Scenes</h1>
+			<ul>
+				<li><code>move</code> method</li>
+			</ul>
+			<pre><code class='language-javascript' id='code-player'>// Calculate the number of milliseconds since the last time render was called (ideally ~16ms)
+var currentTime = new Date().getTime();
+var dt = currentTime - this.lastTime;
+this.lastTime = currentTime;</code></pre>
+			<pre><code class='language-javascript' id='code-player'>this.velocity.x += this.acceleration.x * dt;
+this.velocity.y += this.acceleration.y * dt;
+
+this.position.x += this.velocity.x * dt;
+this.position.y += this.velocity.y * dt;</code></pre>
+		</div>
+		
+		<div class='slide' id='slide-player-states' data-title='Player States (With SVG Spritesheets)'>
+			<h1>Player States (With SVG Spritesheets)</h1>
+		</div>
+		
+		<div class='slide' id='slide-collision' data-title='Collision Detection - Basics'>
+			<h1>Collision Detection - Basics</h1>
+			<ul>
+				<li>Detect when two squares are colliding with each other</li>
+				<li>When colliding, stop movement (e.g. landing on a box)</li>
+			</ul>
+			<pre><code class='language-javascript'>if( Player.right >= this.left && Player.left <= this.right && Player.bottom >= this.top && Player.bottom <= this.bottom && Player.top <= this.bottom )
+	return true;
+</code></pre>
+		</div>
+		
+		<div class='slide' id='slide-collision-side' data-title='Collision Detection - Which Side'>
+			<h1>Collision Detection - Which Side</h1>
+			<ul>
+				<li>Need to move player outside of box, so we need to know the wide the player collided with</li>
+			</ul>
+			<pre><code class='language-javascript'>this.velocity.x += this.acceleration.x * dt;
+// Collision with the left side of the box
+if( Player.right >= this.left && Player.left <= this.left && Player.velocity.x > 0 &&
+( ( Player.bottom > this.top && Player.bottom < this.bottom ) || ( Player.top > this.top && Player.top < this.bottom ) ) )
+	return 'left';
+// Collision with the right side of the box
+else if( Player.right >= this.right && Player.left <= this.right && Player.velocity.x < 0 && 
+( ( Player.bottom > this.top && Player.bottom < this.bottom ) || ( Player.top > this.top && Player.top < this.bottom ) ) )
+	return 'right';
+// Collision with the top side of the box
+else if( Player.bottom >= this.top && Player.top <= this.top && Player.velocity.y >= 0 && 
+( ( Player.right > this.left && Player.right < this.right ) || ( Player.left > this.left && Player.left < this.right ) ) )
+	return 'top';
+// Collision with the top side of the box
+else if( Player.bottom >= this.bottom && Player.top <= this.bottom && Player.velocity.y >= 0 && 
+( ( Player.right > this.left && Player.right < this.right ) || ( Player.left > this.left && Player.left < this.right ) ) )
+	return 'bottom';</code></pre>
+		</div>
+		
+		<div class='slide' id='slide-advanced-concepts' data-title='Advanced Concepts'>
+			<h1>Advanced Concepts</h1>
+			<ul>
+				<li>Garbage Collection</li>
+			</ul>
+		</div>
+		
+		<div class='slide' id='slide-summary' data-title='Summary'>
+			<h1>Summary</h1>
+			<ul>
+				<li>HTML5 Games are great</li>
+				<li>Have a look at the source-code for a better learning experience</li>
+			</ul>
+			<h1><a href='https://github.com/austinhallock/html5.tx'>https://github.com/austinhallock/html5.tx</a></h1></code></pre>
+			<a href='http://clay.io'><img src='http://clay.io/images/full-logo.svg' style='border: none;' /></a>
+		</div>
+		
+		<script type='text/javascript' src='js/stats.js'></script>
+
+		<script type='text/javascript' src='js/game.js'></script>
+		<script type='text/javascript' src='js/helpers.js'></script>
+		<script type='text/javascript' src='js/keys.js'></script>
+		<script type='text/javascript' src='js/spritesheet.js'></script>
+		<script type='text/javascript' src='js/player.js'></script>
+		<script type='text/javascript' src='js/box.js'></script>
+		
+		<script type='text/javascript' src='js/presentation.js'></script>
+		<script type='text/javascript' src='http://clay.io/pennapps/gamecontroller.js'></script>
+		<script type='text/javascript' src='js/prism.js'></script>
+
+	</body>
+</html>
