@@ -2,12 +2,15 @@ var Player = {
 	state: 'stand', // for animations
 	landed: false,
 	jumping: false,
-	bouncing: false,
+	
+	// For the walking animation
 	walkStance: 1, // walk stage 1 or 2 if walking
 	walkStanceChanged: 0,
 	
 	width: Math.round( 100 * spriteSheet.width / 6 ) / 100,
-	collideWidth: 0.6 * Math.round( 100 * spriteSheet.width / 6 ) / 100, // How wide we want to make the collision object
+	// How wide we want to make the collision object
+	// We have to do this because the sprite actually has some extra space around it...
+	collideWidth: 0.6 * Math.round( 100 * spriteSheet.width / 6 ) / 100,
 	height: Math.round( 100 * spriteSheet.height / 3 ) / 100,
 	
 	// If the player collides with an object, we store information about it here (and reuse this object)
@@ -26,7 +29,7 @@ var Player = {
 	},
 	
 	// Velocity when the left/right keys are down
-	WALK_VELOCITY: 50,//17,
+	WALK_VELOCITY: 20,
 	// Velocity when the jump key is down
 	JUMP_VELOCITY: -30,
 	
@@ -36,42 +39,7 @@ var Player = {
 	},
 	
 	start: function() {
-		
-	GameController.init( {
-			left: {
-				dpad: {
-					left: {
-						touchStart: function() {
-							Keys.left = true
-						},
-						touchEnd: function() {
-							Keys.left = false
-						}
-					},
-					right: {
-						touchStart: function() {
-							Keys.right = true
-						},
-						touchEnd: function() {
-							Keys.right = false
-						}
-					},
-					up: false,
-					down: false
-				}
-			},
-			right: {
-				buttons: [false, false, false, {
-					touchStart: function() {
-						Keys.up = true;
-					},
-					touchEnd: function() {
-						Keys.up = false;
-					}
-				}]
-			}
-		} );
-		
+		// Don't really need to do anything, but put stuff related to the player on the game start here..
 	},
 	
 	getState: function() {
@@ -159,6 +127,10 @@ var Player = {
 		return false;
 	},
 	
+	/**
+	 * Called every time in the game loop (~16ms), moves the player around
+	 * @param {int} dt - the number of ms since the last call 
+	 */
 	move: function( dt ) {
 		dt /= 100;
 				
@@ -277,12 +249,16 @@ var Player = {
 			this.y = newY;
 		}
 		
+		// Bounding box stuff
 		this.top = this.y
 		this.bottom = this.height + this.top;
 		this.left = this.x;
 		this.right = this.x + this.collideWidth;
 	},
 	
+	/**
+	 * Draw the player sprite on the canvas 
+	 */
 	draw: function() {
 		var sprite = sprites[ this.state ];
 		

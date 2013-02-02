@@ -57,7 +57,6 @@ var Game = {
 	},
 	
 	render: function() {
-		stats.begin();
 		// Calculate the number of milliseconds since the last time render was called (ideally ~16ms)
 		var currentTime = new Date().getTime();
 		var dt = currentTime - this.lastTime;
@@ -81,7 +80,7 @@ var Game = {
 					this.boxes[i].draw();
 			}
 		}
-		stats.end();
+
 		// Call me again when the browser is ready (ideally every 16ms, or 60 times per second)
 		window.requestAnimationFrame( Game.renderWrapper );
 	},
@@ -123,13 +122,3 @@ window.addEventListener( 'resize', function() {
 	Game.SCALE = { x: ( window.innerWidth / 980 ), y: ( window.innerHeight / 300 ) };
 	Game.populateSlides();
 } );
-
-var stats = new Stats();
-stats.setMode(0); // 0: fps, 1: ms
-
-// Align top-left
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.right = '0px';
-stats.domElement.style.top = '0px';
-
-document.body.appendChild( stats.domElement );

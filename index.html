@@ -63,6 +63,7 @@
 				color: #fff;
 				font-weight: bold;
 				font-size: 1.3em;
+				cursor: pointer;
 			}
 			input[type=button]:hover {
 				background: #147BB3;
@@ -212,6 +213,15 @@ this.position.y += this.velocity.y * dt;</code></pre>
 		
 		<div class='slide' id='slide-player-states' data-title='Player States (With SVG Spritesheets)'>
 			<h1>Player States (With SVG Spritesheets)</h1>
+			<ul>
+				<li>State updated based on velocity (x and y)</li>
+				<ul>
+					<li>Jumping up to left, falling straight down, walking to the right, etc...</li>
+				</ul>
+				<li>Offset determined by state, and sprite's position on spritesheet</li>
+				<li><code>drawImage</code> with more parameters (for offsetting and clipping)</li>
+			</ul>
+			<pre><code class='language-javascript'>Game.ctx.drawImage( spriteSheet, sprite.x, sprite.y, this.width, this.height, this.x, this.y, this.width, this.height );</code></pre>
 		</div>
 		
 		<div class='slide' id='slide-collision' data-title='Collision Detection - Basics'>
@@ -221,8 +231,7 @@ this.position.y += this.velocity.y * dt;</code></pre>
 				<li>When colliding, stop movement (e.g. landing on a box)</li>
 			</ul>
 			<pre><code class='language-javascript'>if( Player.right >= this.left && Player.left <= this.right && Player.bottom >= this.top && Player.bottom <= this.bottom && Player.top <= this.bottom )
-	return true;
-</code></pre>
+	return true;</code></pre>
 		</div>
 		
 		<div class='slide' id='slide-collision-side' data-title='Collision Detection - Which Side'>
@@ -253,6 +262,7 @@ else if( Player.bottom >= this.bottom && Player.top <= this.bottom && Player.vel
 			<h1>Advanced Concepts</h1>
 			<ul>
 				<li>Garbage Collection</li>
+				<li>Retina</li>
 			</ul>
 		</div>
 		
@@ -266,7 +276,14 @@ else if( Player.bottom >= this.bottom && Player.top <= this.bottom && Player.vel
 			<a href='http://clay.io'><img src='http://clay.io/images/full-logo.svg' style='border: none;' /></a>
 		</div>
 		
-		<script type='text/javascript' src='js/stats.js'></script>
+		<div class='slide' id='slide-contact' data-title='Contact Info'>
+			<h1>Contact Info</h1>
+			<ul>
+				<li>austin@clay.io</li>
+				<li>@austinhallock</li>
+			</ul>
+		</div>
+		
 
 		<script type='text/javascript' src='js/game.js'></script>
 		<script type='text/javascript' src='js/helpers.js'></script>
