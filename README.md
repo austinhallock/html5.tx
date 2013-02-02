@@ -1,4 +1,4 @@
-html5.tx
+HTML5.tx Presentation
 ========
 A presentation given at [HTML5.tx](http://html5tx.com/) 2013 about the basics of HTML5 game development.
 
